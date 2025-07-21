@@ -1,0 +1,60 @@
+//https://codeforces.com/problemset/problem/1614/B
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t = 1;
+    cin >> t;
+
+    while (t--)
+    {
+        int n;
+        cin >> n;
+        vector<pair<long long, int>> v(n);
+        for (int i = 0; i < n; i++)
+        {
+            long long z;
+            cin >> z;
+            v[i] = {z, i + 1};
+        }
+
+        sort(v.begin(), v.end());
+
+        map<int, int> mp;
+        bool flag = true;
+        int positive = 0;
+        int negative = 0;
+        long long T = 0;
+        for (int i = n - 1; i >= 0; i--)
+        {
+            int store = v[i].second;
+            long long freq = v[i].first;
+            if (flag)
+            {
+                positive++;
+                mp[store] = positive;
+                T += 1LL * positive * freq;
+            }
+            else
+            {
+                negative--;
+                mp[store] = negative;
+                T += 1LL * abs(negative) * freq;
+            }
+            flag = !flag;
+        }
+
+        T *= 2;
+
+        cout << T << endl;
+
+        cout << "0 ";
+        for (int i = 1; i <= n; i++)
+        {
+            cout << mp[i] << " ";
+        }
+        cout << endl;
+    }
+}
