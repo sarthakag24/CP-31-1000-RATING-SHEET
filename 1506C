@@ -1,0 +1,53 @@
+#include<bits/stdc++.h>
+using namespace std ; 
+
+int main ()
+{
+    int t = 1 ; 
+    cin >> t ;
+    
+    while (t--)
+    {
+      string a ; 
+      string b ;
+      cin >> a >>b ; 
+      
+      if (a.length () < b.length() )
+      { 
+          string s ;
+          s = a ; 
+          a = b ; 
+          b = s ; 
+           
+      }
+      
+      int ans = a.length()+b.length() ; 
+      bool flag = false ; 
+      
+       for (int i = b.length() ; i >= 0 ; i-- )
+       {
+           for (int j = i-1 ; j<b.length() ; j++)
+   {
+        string s = b.substr(j-i+1 , i ) ;
+        
+        for (int k = i-1 ; k < a.length() ; k++)
+         {
+            string s2 = a.substr (k-i+1  , i ) ; 
+           
+         if (s==s2) { ans = i ; flag = true ; break ;    }
+ 
+ }
+ if (flag) {break ; }
+   }
+   if (flag) {break ; }
+   
+      }
+      
+      int real = a.length()+b.length() - 2*ans ; 
+      
+      cout <<abs(real) <<endl ; 
+      
+      
+    }
+   return 0 ;  
+}
