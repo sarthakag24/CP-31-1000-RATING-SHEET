@@ -1,0 +1,48 @@
+// HERE I HAD TO FIND THE A FAIR NUMBER SUCH THAT IT IS DIVISBLE BY ALL ITS DIGITS 
+//SO WHAT I DID I FIND A SUPER FAIR NUMBER LIKE NEXT INTEGER OF N WHICH IS DIVISBIBLE BY 2520 
+// BECAUSE IT WILL BE ALWAYS DIVISIBLE BY ALL 1 TO 9 DIGITS
+// NOW I HAVE TO CHECK ONLY FROM N TO SUPER FAIR INTEGER SO JUST DO BRUTEFORCE FROM N TO SUPER FAIR AND SORTED 
+
+#include<bits/stdc++.h>
+using namespace std ; 
+
+void solve ()
+{
+     long long  n ; 
+     cin >> n ; 
+     
+     long long super_fair = ((n+2519)/2520)*2520 ; 
+     
+     for (long long i = n ; i <= super_fair ; i++ )
+     {
+          long long nums = i ; 
+          bool flag = true ; 
+          while (nums!=0 )
+          {
+               int div = nums%10 ; 
+               
+               if (div != 0  && i % div != 0  ) {flag = false ; break ; }
+               nums/=10 ; 
+               
+               
+          }
+          
+          if (flag) { cout << i << endl ; return ;  }
+          
+     }
+     
+     
+     
+     
+}
+
+
+
+int main ()
+{
+     
+  int t = 1 ; 
+  cin >> t ;
+  while (t--)
+  {solve() ; }   
+}
